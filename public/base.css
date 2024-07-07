@@ -1,0 +1,116 @@
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+}
+
+main {
+    margin: 2rem auto;
+    width: 90%;
+    text-align: center;
+
+}
+
+#main-header {
+    height: 5rem;
+    background-color: blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul {
+    list-style: none;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#main-header a {
+    text-decoration: none;
+    color: white;
+}
+
+#main-header li {
+    margin: 0 1rem;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+
+}
+
+p {
+    text-align: center;
+}
+
+form {
+    width: 30rem;
+    margin: 3rem auto;
+    border: 2px solid black;
+    border-radius: 6px;
+
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+    font: inherit;
+}
+
+input {
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    font: inherit;
+    width: 90%
+}
+
+button {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    font: inherit;
+    border: none;
+    background-color: blueviolet;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: rgb(44, 5, 80);
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: blueviolet;
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(44, 5, 80);
+}
+
+textarea {
+    font: inherit;
+    font-size: 1.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    width: 90%;
+    box-sizing: border-box;
+
+
+
+}
+
+
+.menu {
+    display: flex;
+}

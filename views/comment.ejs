@@ -1,0 +1,56 @@
+<%- include('includes/head.ejs', { title: 'Home' }) %>
+  <script src="/comment/comments.js" defer></script>
+
+  <script>
+
+
+    addEventListener("DOMContentLoaded", (event) => {
+
+      const loadCommentsBtnelement = document.getElementById('load-comments-btn');
+
+      async function fetchCommentsForPost() {
+        const response = await fetch(`/comments`);
+        response.json
+        const responseData = await response.json();
+      }
+      loadCommentsBtnelement.addEventListener('click', fetchCommentsForPost);
+
+      async function onVisualizza(id) {
+        console.log(id);
+      }
+    });
+
+  </script>
+  </head>
+
+
+  <body>
+
+    <%- include('includes/header.ejs') %>
+
+      <main>
+        <h1>Leave a comment</h1>
+        <form action="/comment" method="POST">
+          <div>
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required>
+          </div>
+          <div>
+            <label for="content">Content</label>
+            <textarea name="content" id="content" rows="6" required></textarea>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+        <ul>
+          <% comments.forEach(comment=> { %>
+            <li><strong>
+                <%= comment.title %>
+              </strong>: <%= comment.content %> <button id="load-comments-btn"
+                  onclick="onVisualizza(comment._id)">Visualizza</button></li>
+            <% }); %>
+        </ul>
+
+
+
+      </main>
+  </body>

@@ -8,7 +8,7 @@ async function connectToDatabase() {
   const client = await MongoClient.connect(
     'mongodb://localhost:27017'
   );
-  database = client.db('auth-blog');
+  database = client.db('website');
 }
 
 function getDb() {
