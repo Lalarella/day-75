@@ -76,9 +76,15 @@ router.post('/login', async function (req, res) {
         console.log('Could not log in, check the credential before trying again');
         return res.redirect('/login');
     }
-    res.redirect('/comment');
 
+    req.session.user = {id: existingUser._id, email: existingUser.email};
+    req.session.isAuthenticated = true;
+    req.session.save(function() {
+        res.redirect('/comment');
+    });
 });
+
+
 
 router.get('/comment/:id/comments', async function (req, res) {
     const postId = new ObjectId(req.params.id);
@@ -105,6 +111,10 @@ router.get('/comment/:id/comments', async function (req, res) {
 
 
 router.get('/comment', async (req, res) => {
+
+    if (!req.session.isAuthenticated) {
+        return res.status(401).render('401');
+    }
     try {
         const comments = await db
             .getDb()
@@ -116,6 +126,12 @@ router.get('/comment', async (req, res) => {
         console.error('Error fetching comments:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
+});
+
+router.post('/logout', function(req, res) {
+    req.session.user = null;
+    req.session.isAuthenticated = false;
+    res.redirect('/login');
 });
 
 
